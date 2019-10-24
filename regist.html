@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .max{
+            background-color: #eee;
+            /* border: 1px solid blueviolet; */
+            border-radius: 10%;
+            width: 500px;
+            height: 500px;
+            position:absolute;
+            left: 50%;
+            top: 50%;
+            margin-left:-250px;
+            margin-top: -250px;
+            /* text-align: center; */
+        }
+        form{
+           
+            text-align: center;
+            /* border: 1px solid red; */
+            height: 72%;
+            width: 500px;
+            position:absolute;
+            left: 30%;
+            top: 46%;
+            margin-left:-150px;
+            margin-top: -150px;
+        }
+        lable{
+            font-size: 25px;
+            font-weight: 500;
+        }
+        /* 文本框 */
+        #username,#password{
+            margin: 20px;
+            margin-right: 60px;
+            width: 270px;
+            height: 40px;
+        }
+
+        #user,#pass{
+            float: right;
+        }
+        #getpsd{
+            display: block;
+            margin-top: 173px;
+            margin-left: 45%;
+
+        }
+        a{
+            text-decoration:none;
+            float: right;
+            margin-top: 80%;
+            height: 20px;
+            color: rgb(44, 146, 146);
+        }
+        #bt{
+            border-radius: 10%;
+            width: 300px;
+            outline: none;
+            height: 60px;
+            background-color: rgb(46, 84, 155);
+            font-size: 40px;
+        }
+        body{
+            overflow: hidden;
+            margin: 0;
+            /* border: 1px solid red; */
+            /* background: url('img/bj.jpg'); */
+            outline: none;
+        }
+        img{
+
+            width: 110%;
+            height:100%;
+        }
+        
+    </style><script src="jquery-3.4.1.js"></script>
+</head>
+<body>
+    <img src="img/bj.jpg" alt="背景">
+    <div class="max">
+        <form action="/firstproject/regist" method="POST">
+            <div id="user">
+                <lable>用户名：</lable><input type="text" placeholder="请输入用户名" name="username" id="username">
+            </div>
+            <div id="pass">
+                <lable>密码：</lable><input type="password" id="password" placeholder="请输入密码" name="password">
+            </div>
+            <p id="getpsd">
+                   记住密码<input type="checkbox" value="" id="sel">
+            </p>
+            <br>
+            <button id="bt">登&nbsp;&nbsp;陆</button> 
+            
+        </form>
+        <p class="p">
+            <a href="registor.html">注册账号</a>
+        </p>
+    </div>
+    <script>
+        $(function(){
+            var u=localStorage.getItem('u')
+            u=JSON.parse(u)['u']
+            var p=localStorage.getItem('p')
+            p=JSON.parse(p)['p']
+            if(u&&p){
+                $("#username").val(u)
+                $("#password").val(p)
+                $("#sel").attr("checked","checked");
+            }
+        })
+        $("#bt").bind('click',function(){
+            var $user=$("#username").val()
+            var $pas=$("#password").val()
+            console.log(user)
+            if(!$user){
+                alert('请输入账号');
+                return false;
+            }
+            if(!$pas){
+                alert('请输入密码');
+                return false;
+            }
+            else{        
+                $che=$("#sel").prop('checked')
+                if($che==true){
+                    console.log($che)
+                    var ubj={"u":$("#username").val()}
+                    var pbj={"p":$("#password").val()}
+                    var a=JSON.stringify(ubj)
+                    var b=JSON.stringify(pbj)
+                    localStorage.setItem('u',a)
+                    localStorage.setItem('p',b)
+                }
+                $('form').submit()
+            }
+        })
+    </script>
+</body>
+</html>
