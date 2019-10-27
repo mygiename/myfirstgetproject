@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <script src="./jquery-3.4.1.js"></script>
+    <style>
+        ul{ 
+            width: 100%;
+            height: 54px;
+            margin-top: 2%;
+            /* border: 1px dotted red; */
+            padding: 0;
+             margin-left: 1%;
+            /*  */
+        }
+        ul li{
+            text-align: center;
+            background-color: green;
+            border:1px solid blue;
+            display:inline-block;
+            margin: -3px;
+            font-size: 29px;
+            padding: 2% 53.775px;
+            
+            
+            color: rgb(211, 225, 228);
+        }
+        /* ul li:hover{
+            background-color: rgb(73, 44, 155);
+        } */
+
+        .one_p{
+            /* display: block; */
+            width: 100%;
+            
+        }
+        .title{
+            /* display: inline; */
+            text-align: center;
+            margin-left: 38%;
+           
+        }
+        #time{
+            background-color: rgb(95, 95, 189);
+            float: right;
+        }
+        iframe{
+            height: 500px;
+            width: 98%;
+            /* border: 1px solid red; */
+            
+
+        }
+    </style>
+</head>
+<body>
+    <p class="one_p">
+        <span>欢迎您:</span>先生
+        <span id="name"></span>   
+        <span class="title">现在时间：</span>
+        <button id="time">退出</button>
+    </p>
+    <ul>
+        <li value="1" class="li_class" id="select">首页</li>
+        <li value="2" class="li_class">任务中心</li>
+        <li value="3" class="li_class">发布任务</li>
+        <li value="4" class="li_class">我的任务</li>
+        <li value="5" class="li_class">个人信息</li>
+        <li value="6" class="li_class">更多功能</li>
+    </ul>
+    <iframe src="" frameborder="no"; border="0" >
+
+    </iframe>
+    <script>
+        $(".li_class").bind('click',function(){
+            var a=$("li");
+            for(var i=0;i<a.length;i++){
+                a.css('background', 'green')
+                if(a.val()=="1"){
+                    $("iframe")[0].src="./shouye1.html"
+                }
+                if(a.val()=="2"){
+                    $("iframe")[0].src=""
+                }
+                if(a.val()=="3"){
+                    $("iframe")[0].src=""
+                }
+                if(a.val()=="4"){
+                    $("iframe")[0].src=""
+                }
+                if(a.val()=="5"){
+                    $("iframe")[0].src=""
+                }
+                if(a.val()=="6"){
+                    $("iframe")[0].src=""
+                }
+            }
+            $(this).css({"background": "rgb(95, 95, 189)"});
+        })
+        $(function (){
+            $("#select").css({"background": "rgb(95, 95, 189)"});
+            console.log($("iframe"))
+            $("iframe")[0].src="shouye1.html"
+        })
+    </script>
+</body>
+</html>
